@@ -29,5 +29,6 @@ Route::middleware('islogin')->group(function(){
 Route::middleware('islogout')->group(function(){
     Route::get('/dashboard',[StudentController::class, 'dashboard']);
     Route::get('/logout',[StudentController::class, 'logout']);
+    Route::get('/student/add',[StudentController::class,'stuadd']);
 });
 

@@ -10,11 +10,11 @@
     @endif
     <form action="" method="POST">
       @csrf
-      <input type="text" placeholder="Email address" name="email"  class=" form-control @error('email') is-invalid @enderror"  />
+      <input type="text" placeholder="Email address" name="email"  class="p-3 form-control @error('email') is-invalid @enderror"  />
       @error('email')
       <span class="text-danger">{{ $message }}</span>
      @enderror
-      <input type="password" placeholder="Password" name="password"  class="form-control @error('password') is-invalid @enderror"  />
+      <input type="password" placeholder="Password" name="password"  class="p-3 form-control @error('password') is-invalid @enderror"  />
       @error('password')
       <span class="text-danger">{{ $message }}</span>
       @enderror

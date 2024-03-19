@@ -13,6 +13,8 @@ class StudentController extends Controller
     public function logout(Request $request){
         $request->session()->flush();
         return redirect('/login')->with('logout','Logout Successfully');
-
+    }
+    public function stuadd(){
+        return view('Students.StudentAdd');
     }
 }

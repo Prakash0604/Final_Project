@@ -6,8 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
-		
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 		<link rel="stylesheet" href="{{ asset('stuasset/css/style.css') }}">
   </head>
   <body>
@@ -23,19 +24,25 @@
 	  		<h1><a href="index.html" class="logo">Record Management</a></h1>
         <ul class="list-unstyled components mb-5">
           <li class="active">
-            <a href="#"><span class="fa fa-home mr-3"></span> Homepage</a>
+            <a href="#"><span class="fa fa-home mr-3"></span> Dashboard</a>
           </li>
           <li>
-              <a href="#"><span class="fa fa-user mr-3"></span> Dashboard</a>
+              <a href="#"><span class="fa fa-user mr-3"></span> Add Classroom</a>
           </li>
           <li>
-            <a href="#"><span class="fa fa-sticky-note mr-3"></span> Friends</a>
+              <a href="#"><span class="fa fa-list mr-3"></span>List Classroom</a>
           </li>
           <li>
-            <a href="#"><span class="fa fa-sticky-note mr-3"></span> Subcription</a>
+              <a href="#"><span class="fa fa-user mr-3"></span> Add Student</a>
+          </li>
+          <li>
+            <a href="#"><span class="fa fa-list mr-3"></span>Student List</a>
           </li>
           <li>
             <a href="#"><span class="fa fa-paper-plane mr-3"></span> Settings</a>
+          </li>
+          <li>
+            <a href="#"><span class="fa fa-group mr-3"></span> Friends</a>
           </li>
           <li>
             <a href="{{ url('logout') }}"><span class="fa fa-sign-out mr-3"></span> Logout</a>
