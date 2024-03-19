@@ -5,6 +5,9 @@
     @if (session()->has('invalid'))
       <div class="alert alert-danger text-center">{{ session()->get('invalid') }}</div>
     @endif
+    @if (session()->has('logout'))
+      <div class="alert alert-success text-center">{{ session()->get('logout') }}</div>
+    @endif
     <form action="" method="POST">
       @csrf
       <input type="text" placeholder="Email address" name="email"  class=" form-control @error('email') is-invalid @enderror"  />

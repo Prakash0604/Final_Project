@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\StudentController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -16,9 +17,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/register',[UserController::class, 'loadregister']);
-Route::post('/register',[UserController::class, 'storeregister']);
-Route::get('/verifynow/{token}',[UserController::class, 'verify']);
-Route::get('/login',[UserController::class, 'loadlogin']);
-Route::post('/login',[UserController::class, 'storelogin']);
+Route::middleware('islogin')->group(function(){
+
+    Route::get('/register',[UserController::class, 'loadregister']);
+    Route::post('/register',[UserController::class, 'storeregister']);
+    Route::get('/verifynow/{token}',[UserController::class, 'verify']);
+    Route::get('/login',[UserController::class, 'loadlogin']);
+    Route::post('/login',[UserController::class, 'storelogin']);
+});
+
+Route::middleware('islogout')->group(function(){
+    Route::get('/dashboard',[StudentController::class, 'dashboard']);
+    Route::get('/logout',[StudentController::class, 'logout']);
+});
 

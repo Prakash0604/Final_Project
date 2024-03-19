@@ -84,6 +84,27 @@ class UserController extends Controller
     public function loadlogin(){
         return view('login');
     }
-
+    public function storelogin(Request $request){
+        $request->validate([
+            'email'=>'required|email',
+            'password'=>'required',
+        ]);
+        $login=User::where('email',$request->email)->get();
+        if(count($login) >0){
+            if($login[0]['is_verified']==0){
+                return back()->with('invalid','Email not verified yet');
+            }else{
+                $Auth=$request->only('email','password');
+                if(Auth::attempt($Auth)){
+                    $request->session()->put('email');
+                    return redirect('/dashboard');
+                }else{
+                    return back()->with('invalid','Invalid login Crediantials');
+                }
+            }
+        }else{
+            return back()->with('invalid','Email not register yet');
+        }
+    }
     
 }
