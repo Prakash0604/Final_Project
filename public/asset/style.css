@@ -13,7 +13,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #f0faff;
+  /* background: #f0faff; */
 }
 
 .wrapper {
@@ -31,14 +31,11 @@ body {
 .form header {
   font-size: 30px;
   text-align: center;
-  color: #fff;
+  /* color: #fff; */
   font-weight: 600;
   cursor: pointer;
 }
 
-.wrapper.active .signup header {
-  opacity: 0.6;
-}
 
 .wrapper form {
   display: flex;
@@ -47,24 +44,3 @@ body {
   margin-top: 40px;
 }
 
-form input {
-  height: 60px;
-  outline: none;
-  border: none;
-  padding: 0 15px;
-  font-size: 16px;
-  font-weight: 400;
-  color: #333;
-  border-radius: 8px;
-  background: #fff;
-}
-
-
-form a {
-  color: #333;
-  text-decoration: none;
-}
-
-form a:hover {
-  text-decoration: underline;
-}
