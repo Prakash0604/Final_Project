@@ -27,13 +27,13 @@
             <a href="#"><span class="fa fa-home mr-3"></span> Dashboard</a>
           </li>
           <li>
-              <a href="#"><span class="fa fa-user mr-3"></span> Add Classroom</a>
+              <a href="{{ url('classroom/add') }}"><span class="fa fa-user mr-3"></span> Add Classroom</a>
           </li>
           <li>
-              <a href="#"><span class="fa fa-list mr-3"></span>List Classroom</a>
+              <a href="{{ url('classroom/view') }}"><span class="fa fa-list mr-3"></span>List Classroom</a>
           </li>
           <li>
-              <a href="#"><span class="fa fa-user mr-3"></span> Add Student</a>
+              <a href="{{ url('student/add') }}"><span class="fa fa-user mr-3"></span> Add Student</a>
           </li>
           <li>
             <a href="#"><span class="fa fa-list mr-3"></span>Student List</a>

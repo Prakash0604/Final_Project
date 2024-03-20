@@ -30,5 +30,11 @@ Route::middleware('islogout')->group(function(){
     Route::get('/dashboard',[StudentController::class, 'dashboard']);
     Route::get('/logout',[StudentController::class, 'logout']);
     Route::get('/student/add',[StudentController::class,'stuadd']);
+    Route::get('/classroom/add',[StudentController::class, 'loadclassroom']);
+    Route::post('/classroom/add',[StudentController::class, 'storeclassroom']);
+    Route::get('/classroom/view',[StudentController::class, 'loadclasslist']);
+    Route::get('/classroom/{id}/edit',[StudentController::class, 'loadclassedit']);
+    Route::post('/classroom/{id}/edit',[StudentController::class, 'storeclassedit']);
+    Route::get('/classroom/{id}/delete',[StudentController::class, 'classdel']);
 });
 
