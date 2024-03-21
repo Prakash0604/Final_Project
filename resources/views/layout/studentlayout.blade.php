@@ -21,10 +21,10 @@
 	          <span class="sr-only">Toggle Menu</span>
 	        </button>
         </div>
-	  		<h1><a href="index.html" class="logo">Record Management</a></h1>
+	  		<h1><a href="{{ '/dashboard' }}" class="logo">Record Management</a></h1>
         <ul class="list-unstyled components mb-5">
           <li class="active">
-            <a href="#"><span class="fa fa-home mr-3"></span> Dashboard</a>
+            <a href="{{ url('/dashboard') }}"><span class="fa fa-home mr-3"></span> Dashboard</a>
           </li>
           <li>
               <a href="{{ url('classroom/add') }}"><span class="fa fa-user mr-3"></span> Add Classroom</a>
@@ -39,10 +39,13 @@
             <a href="#"><span class="fa fa-list mr-3"></span>Student List</a>
           </li>
           <li>
-            <a href="#"><span class="fa fa-paper-plane mr-3"></span> Settings</a>
+            <a href="{{ url('password-change') }}"><span class="fa fa-paper-plane mr-3"></span> Settings</a>
           </li>
           <li>
             <a href="#"><span class="fa fa-group mr-3"></span> Friends</a>
+          </li>
+          <li>
+            <a href="{{ url('reports') }}"><span class="fa fa-group mr-3"></span> Reports</a>
           </li>
           <li>
             <a href="{{ url('logout') }}"><span class="fa fa-sign-out mr-3"></span> Logout</a>

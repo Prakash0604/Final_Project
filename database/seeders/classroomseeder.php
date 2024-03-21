@@ -13,10 +13,12 @@ class classroomseeder extends Seeder
      */
     public function run(): void
     {
-        // $faker=Faker::create();
-        // $class=classroom::insert([
-        //     'class_name'=>$faker->name,
-        //     'class_desc'=>$faker->paragraph(15),
-        // ]);
+        for($i=0; $i<10;$i++){
+        $faker=Faker::create();
+            $class=classroom::insert([
+                'class_name'=>$faker->name,
+                'class_desc'=>$faker->paragraph(2),
+            ]);
+        }
     }
 }

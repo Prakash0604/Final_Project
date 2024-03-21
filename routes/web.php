@@ -29,12 +29,20 @@ Route::middleware('islogin')->group(function(){
 Route::middleware('islogout')->group(function(){
     Route::get('/dashboard',[StudentController::class, 'dashboard']);
     Route::get('/logout',[StudentController::class, 'logout']);
-    Route::get('/student/add',[StudentController::class,'stuadd']);
     Route::get('/classroom/add',[StudentController::class, 'loadclassroom']);
     Route::post('/classroom/add',[StudentController::class, 'storeclassroom']);
     Route::get('/classroom/view',[StudentController::class, 'loadclasslist']);
     Route::get('/classroom/{id}/edit',[StudentController::class, 'loadclassedit']);
     Route::post('/classroom/{id}/edit',[StudentController::class, 'storeclassedit']);
     Route::get('/classroom/{id}/delete',[StudentController::class, 'classdel']);
+    Route::get('/reports',[StudentController::class,'reports']);
+    Route::get('/reports/classroom/active',[StudentController::class, 'active']);
+    Route::get('/reports/classroom/inactive',[StudentController::class, 'inactive']);
+    Route::get('/password-change',[StudentController::class, 'change_password'])->name('change_password');
+    Route::post('/password-change',[StudentController::class, 'update_password']);
+    Route::get('/student/add',[StudentController::class,'stuadd']);
+    Route::post('/student/add',[StudentController::class,'stustore']);
+    Route::get('/student/view',[StudentController::class, 'loadstudentview']);
+
 });
 
