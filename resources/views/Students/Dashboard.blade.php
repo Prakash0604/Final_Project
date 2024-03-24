@@ -20,6 +20,24 @@
                     </tr>
                 </tbody>
             </table>
+
+            <table class="table text-center table-bordered">
+                <thead>
+                    <tr>
+                        <th>Total Students</th>
+                        <th>Active students</th>
+                        <th>Inactive students</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td scope="row">{{ $totalstudent }}</td>
+                        <td><a href="{{ url('reports/students/active') }}" class="btn btn-warning">{{ $studentactive }}</a></td>
+                        <td><a href="{{ url('reports/students/inactive') }}" class="btn btn-danger">{{ $studentinactive }}</a></td>
+                    </tr>
+                </tbody>
+            </table>
+
         </div>
     </div>
 @endsection

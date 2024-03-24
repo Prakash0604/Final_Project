@@ -19,7 +19,10 @@ class StudentController extends Controller
         $classactive=classroom::where('status','=','Active')->count();
         $classinactive=classroom::where('status','=','inactive')->count();
         $totalclass=classroom::all()->count();
-        $data=compact('classactive','classinactive','totalclass');
+        $totalstudent=student::all()->count();
+        $studentactive=student::where('status','=','Active')->count();
+        $studentinactive=student::where('status','=','inactive')->count();
+        $data=compact('classactive','classinactive','totalclass','totalstudent','studentactive','studentinactive');
         return view('Students.Dashboard')->with($data);
     }
     public function logout(Request $request){
@@ -41,8 +44,14 @@ class StudentController extends Controller
         return back()->with('classadd','Classroom Added successfully');
     }
     public function loadclasslist(Request $request){
-        $classes=classroom::paginate(5);
-        $data=compact('classes');
+        $class_status=$request->class_status;
+        if($class_status!=""){
+            $classes=classroom::where('status',$class_status)->paginate(4);
+        }else{
+            $classes=classroom::paginate(4);
+        }
+        $totalstudents = student::where('stu_class')->count();
+        $data=compact('classes','totalstudents','class_status');
         return view('Students.classroomview')->with($data);
     }
     public function loadclassedit($id){
@@ -108,7 +117,7 @@ public function update_password(Request $request){
     return redirect('password-change')->with('success', 'Password changed successfully');
 }
 public function stuadd(){
-    $classrooms=classroom::all();
+    $classrooms=classroom::where('status','Active')->get();
     return view('Students.StudentAdd',compact('classrooms'));
 }
 public function stustore(Request $request){
@@ -158,7 +167,17 @@ public function loadallstudent(Request $request){
     return view('Students.AllStudentList',compact('students'));
 }
 
-public function classroomstudent(){
-
+public function classroomstudent($id){
+    $classstu=student::where('stu_class',$id)->get();
+    return view('Students.classroom.classroomstudent',['classstu'=>$classstu]);
+    
+}
+public function activestudentlist(){
+    $activestudent=student::where('status','=','Active')->get();
+    return view('Students.Activestudentlist',compact('activestudent'));
+}
+public function inactivestudentlist(){
+    $inactivestudent=student::where('status','=','Inactive')->get();
+    return view('Students.Inactivestudentlist',compact('inactivestudent'));
 }
 }

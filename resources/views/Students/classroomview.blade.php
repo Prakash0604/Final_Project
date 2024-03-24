@@ -14,12 +14,25 @@
         @if (session()->has('delete'))
             <div class="alert alert-success text-center">{{ session()->get('delete') }}</div>
         @endif
+        <div class="container col-4 mb-2">
+            <form action="" method="get">
+                <div class="form-group">
+                  <label for="">Status</label>
+                  <select class="form-control" name="class_status" id="">
+                    <option value="">Select All</option>
+                    <option value="Active"{{ Request::get('class_status')=='Active' ? "selected":'' }}>Active</option>
+                    <option value="Inactive" {{ Request::get('class_status')=="Inactive"? "selected":"" }}>Inactive</option>
+                  </select>
+                </div>
+                <button class="btn btn-primary">Filter</button>
+            </form>
+        </div>
         <table class="table table-bordered">
             <thead class="thead-dark">
                 <tr>
                     <th>S.n</th>
                     <th>Class Name</th>
-                    <th>Description</th>
+                    <th>Total Student</th>
                     <th>Status</th>
                     <th>Action</th>
                 </tr>
@@ -29,10 +42,11 @@
                     $n=1;
                 @endphp
                 @forelse ($classes as $class )
+                
                 <tr>
                     <td>{{ $n }}</td>
-                    <td><a href="{{ url('classroom/view/student') }}">{{ $class->class_name }}</a></td>
-                    <td>{{ $class->class_desc }}</td>
+                    <td><a href="{{ url('classroom/view/student/'.$class->id) }}">{{ $class->class_name }}</a></td>
+                    <td>{{ $totalstudents }}</td>
                     <td>@if($class->status!='Active')
                         <span class="badge badge-pill bg-danger">Inactive</span>
                         @else
@@ -46,7 +60,7 @@
                 </tr>
                 @php
                     $n=$n+1;
-                @endphp
+                    @endphp
                 @empty
                 <tr>
                     <td colspan="5" class="text-center">No data available</td>
