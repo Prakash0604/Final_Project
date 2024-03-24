@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -144,5 +145,20 @@ public function loadstudentview(){
     $students=student::join('classrooms','students.stu_class','=','classrooms.id')->get();
     return view('Students.StudentView',compact('students'));
 }
+public function loadallstudent(Request $request){
+    if($request->status!="")
+    {
+        $students=student::where('status',$request->status)->get();
+    }else{
 
+        $students=student::all();
+    }
+    
+    // $students->all();
+    return view('Students.AllStudentList',compact('students'));
+}
+
+public function classroomstudent(){
+
+}
 }

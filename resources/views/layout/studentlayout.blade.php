@@ -36,7 +36,7 @@
               <a href="{{ url('student/add') }}"><span class="fa fa-user mr-3"></span> Add Student</a>
           </li>
           <li>
-            <a href="#"><span class="fa fa-list mr-3"></span>Student List</a>
+            <a href="{{ url('/student/view1') }}"><span class="fa fa-list mr-3"></span>Student List</a>
           </li>
           <li>
             <a href="{{ url('password-change') }}"><span class="fa fa-paper-plane mr-3"></span> Settings</a>

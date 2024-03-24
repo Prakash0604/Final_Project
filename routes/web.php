@@ -43,6 +43,7 @@ Route::middleware('islogout')->group(function(){
     Route::get('/student/add',[StudentController::class,'stuadd']);
     Route::post('/student/add',[StudentController::class,'stustore']);
     Route::get('/student/view',[StudentController::class, 'loadstudentview']);
-
+    Route::get('/student/view1',[StudentController::class, 'loadallstudent']);
+    Route::get('/classroom/view/student',[StudentController::class, 'classroomstudent']);
 });
 

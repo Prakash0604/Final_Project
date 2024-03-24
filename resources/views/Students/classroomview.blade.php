@@ -31,7 +31,7 @@
                 @forelse ($classes as $class )
                 <tr>
                     <td>{{ $n }}</td>
-                    <td>{{ $class->class_name }}</td>
+                    <td><a href="{{ url('classroom/view/student') }}">{{ $class->class_name }}</a></td>
                     <td>{{ $class->class_desc }}</td>
                     <td>@if($class->status!='Active')
                         <span class="badge badge-pill bg-danger">Inactive</span>
