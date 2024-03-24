@@ -31,7 +31,7 @@ Route::middleware('islogout')->group(function(){
     Route::get('/logout',[StudentController::class, 'logout']);
     Route::get('/classroom/add',[StudentController::class, 'loadclassroom']);
     Route::post('/classroom/add',[StudentController::class, 'storeclassroom']);
-    Route::get('/classroom/view',[StudentController::class, 'loadclasslist']);
+    Route::get('/classroom/view/{id?}',[StudentController::class, 'loadclasslist']);
     Route::get('/classroom/{id}/edit',[StudentController::class, 'loadclassedit']);
     Route::post('/classroom/{id}/edit',[StudentController::class, 'storeclassedit']);
     Route::get('/classroom/{id}/delete',[StudentController::class, 'classdel']);
@@ -44,6 +44,8 @@ Route::middleware('islogout')->group(function(){
     Route::post('/student/add',[StudentController::class,'stustore']);
     Route::get('/student/view',[StudentController::class, 'loadstudentview']);
     Route::get('/student/view1',[StudentController::class, 'loadallstudent']);
-    Route::get('/classroom/view/student',[StudentController::class, 'classroomstudent']);
+    Route::get('/classroom/view/student/{id}',[StudentController::class, 'classroomstudent']);
+    Route::get('/reports/students/active',[StudentController::class, 'activestudentlist']);
+    Route::get('/reports/students/inactive',[StudentController::class, 'inactivestudentlist']);
 });
 
