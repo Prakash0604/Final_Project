@@ -46,13 +46,28 @@ class StudentController extends Controller
     public function loadclasslist(Request $request){
         $class_status=$request->class_status;
         if($class_status!=""){
-            $classes=classroom::where('status',$class_status)->paginate(4);
+            $classes=classroom::where('status',$class_status)->paginate(5);
+            // Total Student list shown query start
+            foreach ($classes as $class) {
+                $totalStudents = Student::where('stu_class', $class->id)->count();
+                $class->total_students = $totalStudents;
+            }        
+            // Total Student list shown query End
         }else{
-            $classes=classroom::paginate(4);
+            $classes=classroom::paginate(5);
+            foreach ($classes as $class) {
+                $totalStudents = Student::where('stu_class', $class->id)->count();
+                $class->total_students = $totalStudents;
+            }        
         }
-        $totalstudents = student::where('stu_class')->count();
-        $data=compact('classes','totalstudents','class_status');
+        // $totalstudents = classroom::withCount('student')->get();
+        // $totalstudents=student::with('classroom')->where('stu_class')->count();
+
+        // $classes = Classroom::all();
+    
+        $data=compact('classes','class_status');
         return view('Students.classroomview')->with($data);
+        // return  $data;
     }
     public function loadclassedit($id){
         $classrooms=classroom::findOrFail($id);
@@ -157,10 +172,10 @@ public function loadstudentview(){
 public function loadallstudent(Request $request){
     if($request->status!="")
     {
-        $students=student::where('status',$request->status)->get();
+        $students=student::where('status',$request->status)->paginate(5);
     }else{
 
-        $students=student::all();
+        $students=student::paginate(5);
     }
     
     // $students->all();
