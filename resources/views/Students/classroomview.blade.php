@@ -46,7 +46,7 @@
                 <tr>
                     <td>{{ $n }}</td>
                     <td><a href="{{ url('classroom/view/student/'.$class->id) }}">{{ $class->class_name }}</a></td>
-                    <td>{{ $totalstudents }}</td>
+                    <td>{{ $class->total_students }}</td>
                     <td>@if($class->status!='Active')
                         <span class="badge badge-pill bg-danger">Inactive</span>
                         @else
