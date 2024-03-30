@@ -67,6 +67,9 @@
             </tbody>
         </table>
     </div>
+    <div class="container mt-3">
+        {{ $students->links() }}
+    </div>
 </div>
     
 @endsection

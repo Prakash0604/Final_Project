@@ -172,10 +172,10 @@ public function loadstudentview(){
 public function loadallstudent(Request $request){
     if($request->status!="")
     {
-        $students=student::where('status',$request->status)->get();
+        $students=student::where('status',$request->status)->paginate(5);
     }else{
 
-        $students=student::all();
+        $students=student::paginate(5);
     }
     
     // $students->all();
